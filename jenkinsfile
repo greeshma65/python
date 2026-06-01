@@ -7,6 +7,7 @@ pipeline {
         stage("Deploy in PROD"){
             steps {
                 sh "docker rm -f webos"
+                sh "docker pull greeshma369/gfg:latest"
                 sh "docker run -dit --name webos -p 81:80 greeshma369/gfg"
             }
         }
