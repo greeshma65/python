@@ -37,21 +37,22 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
- sonarqube:
+  
+  sonarqube:
     name: Build and analyze
     runs-on: ubuntu-latest
 
     steps:
      - uses: actions/checkout@v4
-      with:
+       with:
         fetch-depth: 0
 
      - uses: SonarSource/sonarqube-scan-action@v6
-      env:
+       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
      - uses: SonarSource/sonarqube-quality-gate-action@v1.2.0
-      timeout-minutes: 5
-      env:
+       timeout-minutes: 5
+       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
